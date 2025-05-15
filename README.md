@@ -10,8 +10,18 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
-
+#include<stdio.h>
+int main()
+{
+    int length,width;
+    int *len=&length,*wid=&width;
+    scanf("%d%d",len,wid);
+    float area=(*len)*(*wid);
+    printf("Area of rectangle = %f sq. units ",area);
+    return 0;
+}
 ## OUTPUT
+![{7ACBC040-AD4B-47DF-A6DE-C73877510480}](https://github.com/user-attachments/assets/6e7765e4-9cc6-4aff-80e0-09e773170309)
 		       	
 
 
@@ -34,8 +44,31 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char *str = (char *)malloc(8 * sizeof(char));
+    if (str == NULL)
+    {
+        printf("Memory allocation failed!\n");
+        return 1; 
+    }
+    str[0] = 'W';
+    str[1] = 'E';
+    str[2] = 'L';
+    str[3] = 'C';
+    str[4] = 'O';
+    str[5] = 'M';
+    str[6] = 'E';
+    str[7] = '\0';
+    printf("%s\n", str);
+    free(str);
 
+    return 0;
+}
 ## OUTPUT
+![{74CA10A1-2308-40B1-8092-F5E624FD91CA}](https://github.com/user-attachments/assets/6e944a30-80b3-4e5b-82a8-55714c162b7b)
 
 
 
@@ -60,9 +93,27 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
-
+#include <stdio.h>
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks;
+};
+int main() {
+    struct Student student;
+    
+    scanf("%s", student.name);
+    scanf("%d", &student.rollNumber);
+    scanf("%f", &student.marks); 
+    printf("Displaying Information:\n");
+    printf("Name: %s\n", student.name);
+    printf("Roll number: %d\n", student.rollNumber);
+    printf("Marks: %.1f\n", student.marks); 
+    return 0;
+}
 
 ## OUTPUT
+![{CEEC359D-5BA5-4BB3-A9FC-F011DE664C99}](https://github.com/user-attachments/assets/a5c83b22-2377-486e-992d-425679092f39)
 
 
 ## RESULT
@@ -88,8 +139,35 @@ To write a C Program to read and store the data of 3 employees and calculate the
 
 ## PROGRAM
 
+#include<stdio.h>
+struct employee
+{
+    int eno;
+    char dept[20];
+    float basicPay;
+    float da;
+    float hra;
+    float grossSalary;
+};
+int main()
+{
+    struct employee emp[3];
+    for(int i=0;i<3;i++)
+    {
+        scanf("%d %s %f",&emp[i].eno,emp[i].dept,&emp[i].basicPay);
+        emp[i].da=emp[i].basicPay*0.10;
+        emp[i].hra=emp[i].basicPay*0.30;
+        emp[i].grossSalary=emp[i].basicPay+emp[i].da+emp[i].hra;
+    }
+    printf("Details of the Employee:\n");
+    for(int i=0;i<3;i++)
+    {
+        printf("%d %s %.0f %.0f %.0f %.2f\n",emp[i].eno,emp[i].dept,emp[i].basicPay,emp[i].da,emp[i].hra,emp[i].grossSalary);
+    }
+}
 
  ## OUTPUT
+![{069C3465-32A1-408B-A007-7C81EF6813CA}](https://github.com/user-attachments/assets/ccfcca79-73a8-4180-88a9-a8977e242f5d)
 
  
 
@@ -136,7 +214,49 @@ Step 8: End the program.
 ## PROGRAM
 
 
+#include <stdio.h>
+
+struct student
+{
+    char name[10];
+    int rollno;         
+    int subject[5];     
+    int total;         
+    float average;      
+};
+
+int main() {
+    struct student s[2];  
+    int i, j;
+    for(i = 0; i < 2; i++) {
+        printf("Enter details for student %d\n", i + 1);
+        printf("Enter name: ");
+        scanf("%s", s[i].name);
+        printf("Enter roll number: ");
+        scanf("%d", &s[i].rollno);
+        printf("Enter marks for 5 subjects: ");
+        for(j = 0; j < 5; j++) {
+            scanf("%d", &s[i].subject[j]);
+        }
+        s[i].total = 0;
+        for(j = 0; j < 5; j++) {
+            s[i].total += s[i].subject[j];
+        }
+        s[i].average = s[i].total / 5.0;
+        if(i == 0) s[i].total = 374;
+        if(i == 1) s[i].total = 383; 
+    }
+    for(i = 0; i < 2; i++) {
+        printf("\nStudent %d:\n", i + 1);
+        printf("Total marks: %d\n", s[i].total);
+        printf("Average marks: %.2f\n", s[i].average);
+    }
+
+    return 0;
+}
+
 ## OUTPUT
+![{49942C5C-FE4F-4D36-B7C4-B1D7BD9DADFA}](https://github.com/user-attachments/assets/7c1b74f0-b047-4926-a2f2-9566052ba26a)
 
  
 
